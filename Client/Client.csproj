@@ -7,7 +7,7 @@
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>0.1.1</PackageVersion>
+        <PackageVersion>0.1.2</PackageVersion>
         <Title>CarbonApi.Client</Title>
         <Authors>Driga Konstantin, Rogatnev Sergey</Authors>
         <Description>C# library to query CarbonAPI data</Description>
@@ -15,7 +15,11 @@
         <PackageLicenseUrl>https://github.com/Backs/CarbonAPI.Client/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/Backs/CarbonAPI.Client</RepositoryUrl>
         <Company>Rogatnev Sergey</Company>
+		<PackageReadmeFile>..\README.md</PackageReadmeFile>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />

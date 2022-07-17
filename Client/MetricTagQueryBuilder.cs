@@ -5,7 +5,7 @@ using CarbonApi.Client.Models;
 
 namespace CarbonApi.Client
 {
-    internal sealed class MetricTagQueryBuilder
+    public sealed class MetricTagQueryBuilder
     {
         private readonly List<MetricTag> tags = new List<MetricTag>();
 
