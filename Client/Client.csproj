@@ -15,7 +15,7 @@
         <PackageLicenseUrl>https://github.com/Backs/CarbonAPI.Client/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/Backs/CarbonAPI.Client</RepositoryUrl>
         <Company>Rogatnev Sergey</Company>
-		<PackageReadmeFile>..\README.md</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
