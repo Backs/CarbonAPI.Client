@@ -19,7 +19,6 @@
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-      <PackageReference Include="Vostok.ClusterClient.Core" Version="0.1.44" />
       <PackageReference Include="Vostok.ClusterClient.Transport" Version="0.1.26" />
     </ItemGroup>
 
