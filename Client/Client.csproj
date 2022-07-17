@@ -6,6 +6,15 @@
         <RootNamespace>CarbonApi.Client</RootNamespace>
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Title>CarbonApi.Client</Title>
+        <Authors>Driga Konstantin, Rogatnev Sergey</Authors>
+        <Description>C# library to query CarbonAPI data</Description>
+        <PackageProjectUrl>https://github.com/Backs/CarbonAPI.Client</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/Backs/CarbonAPI.Client/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Backs/CarbonAPI.Client</RepositoryUrl>
+        <Company>Rogatnev Sergey</Company>
     </PropertyGroup>
 
     <ItemGroup>

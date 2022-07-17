@@ -7,9 +7,9 @@ namespace CarbonApi.Client.Models
     {
         public MetricTag(string key, string value, MetricTagOperator op = MetricTagOperator.Equal)
         {
-            this.Key = key ?? throw new ArgumentNullException(nameof(key));
-            this.Value = value ?? throw new ArgumentNullException(nameof(value));
-            this.Operator = op;
+            Key = key ?? throw new ArgumentNullException(nameof(key));
+            Value = value ?? throw new ArgumentNullException(nameof(value));
+            Operator = op;
         }
 
         public string Key { get; }
@@ -20,11 +20,11 @@ namespace CarbonApi.Client.Models
 
         public override string ToString()
         {
-            var op = Operators[this.Operator];
-            return $"'{this.Key}{op}{this.Value}'";
+            var op = Operators[Operator];
+            return $"'{Key}{op}{Value}'";
         }
 
-        private static readonly Dictionary<MetricTagOperator, string> Operators = new Dictionary<MetricTagOperator, string>
+        private static readonly Dictionary<MetricTagOperator, string> Operators = new()
         {
             { MetricTagOperator.Equal, "=" },
             { MetricTagOperator.Like, "=~" },
