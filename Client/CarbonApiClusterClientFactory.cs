@@ -8,7 +8,7 @@ using Vostok.Logging.Abstractions;
 
 namespace CarbonApi.Client
 {
-    internal class CarbonApiClusterClientFactory : ICarbonApiClusterClientFactory
+    public class CarbonApiClusterClientFactory : ICarbonApiClusterClientFactory
     {
         private readonly ILog log;
         private readonly string url;

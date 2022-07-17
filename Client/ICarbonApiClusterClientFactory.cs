@@ -1,6 +1,6 @@
 ﻿namespace CarbonApi.Client
 {
-    internal interface ICarbonApiClusterClientFactory
+    public interface ICarbonApiClusterClientFactory
     {
         ICarbonApiClient Create();
     }
