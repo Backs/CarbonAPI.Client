@@ -15,34 +15,34 @@ jobs:
       id-token: write
       contents: read
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: |
-          6.0.x
-          8.0.x
-        
-    - name: Restore dependencies
-      run: dotnet restore CarbonAPI.Client.sln
-      
-    - name: Build
-      run: dotnet build CarbonAPI.Client.sln --no-restore -c Release
-      
-    - name: Test
-      run: dotnet test CarbonAPI.Client.sln --no-build -c Release --verbosity normal
+      - uses: actions/checkout@v4
 
-    - name: Pack
-      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-      run: dotnet pack Client/Client.csproj -c Release -o out --no-build --no-restore
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
-    - name: NuGet login (OIDC → temp API key)
+      - name: Restore dependencies
+        run: dotnet restore CarbonAPI.Client.sln
+
+      - name: Build
+        run: dotnet build CarbonAPI.Client.sln --no-restore -c Release
+
+      - name: Test
+        run: dotnet test CarbonAPI.Client.sln --no-build -c Release --verbosity normal
+
+      - name: Pack
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        run: dotnet pack Client/Client.csproj -c Release -o out --no-build --no-restore
+
+      - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
         id: login
         with:
           user: carbon-bot
-      
-    - name: Push to NuGet
-      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-      run: dotnet nuget push "out/*.nupkg" --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{steps.login.outputs.NUGET_API_KEY}}
+
+      - name: Push to NuGet
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        run: dotnet nuget push "out/*.nupkg" --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{steps.login.outputs.NUGET_API_KEY}}
