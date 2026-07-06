@@ -1,6 +1,5 @@
 # CarbonAPI.Client
 [![MIT](https://img.shields.io/github/license/Backs/CarbonAPI.Client)](LICENSE)
-[![AppVeyor](https://img.shields.io/appveyor/build/Backs/carbonapi-client)](https://ci.appveyor.com/project/Backs/carbonapi-client)
 [![Nuget](https://img.shields.io/nuget/v/CarbonAPI.Client)](https://www.nuget.org/packages/CarbonAPI.Client/)
 
 ### How to use
