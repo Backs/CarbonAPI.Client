@@ -1,7 +1,6 @@
-﻿namespace CarbonApi.Client.Aggregation
+﻿namespace CarbonApi.Client.Aggregation;
+
+public interface IAggregation
 {
-    public interface IAggregation
-    {
-        string Apply(string path);
-    }
+    string Apply(string path);
 }

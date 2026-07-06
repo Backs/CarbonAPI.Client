@@ -1,7 +1,6 @@
-﻿namespace CarbonApi.Client
+﻿namespace CarbonApi.Client;
+
+public interface IStatisticKey
 {
-    public interface IStatisticKey
-    {
-        string Name { get; }
-    }
+    string Name { get; }
 }

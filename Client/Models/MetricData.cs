@@ -1,9 +1,8 @@
-﻿namespace CarbonApi.Client.Models
-{
-    internal class MetricData
-    {
-        public string Target { get; set; }
+﻿namespace CarbonApi.Client.Models;
 
-        public decimal?[][] DataPoints { get; set; }
-    }
+internal class MetricData
+{
+    public string Target { get; set; }
+
+    public decimal?[][] DataPoints { get; set; }
 }

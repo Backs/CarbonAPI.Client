@@ -1,17 +1,16 @@
 ﻿using System;
 
-namespace CarbonApi.Client
+namespace CarbonApi.Client;
+
+public class DataPoint
 {
-    public class DataPoint
+    public double? Value { get; }
+
+    public DateTime DateTime { get; }
+
+    public DataPoint(double? value, DateTime dateTime)
     {
-        public double? Value { get; }
-
-        public DateTime DateTime { get; }
-
-        public DataPoint(double? value, DateTime dateTime)
-        {
-            this.Value = value;
-            this.DateTime = dateTime;
-        }
+        this.Value = value;
+        this.DateTime = dateTime;
     }
 }

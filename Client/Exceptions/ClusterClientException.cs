@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace CarbonApi.Client.Exceptions
+namespace CarbonApi.Client.Exceptions;
+
+internal class ClusterClientException : Exception
 {
-    internal class ClusterClientException : Exception
+    public ClusterClientException(string message)
+        : base(message)
     {
-        public ClusterClientException(string message)
-            : base(message)
-        {
-        }
     }
 }

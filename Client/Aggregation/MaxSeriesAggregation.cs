@@ -1,10 +1,9 @@
-﻿namespace CarbonApi.Client.Aggregation
+﻿namespace CarbonApi.Client.Aggregation;
+
+public sealed class MaxSeriesAggregation : IAggregation
 {
-    public sealed class MaxSeriesAggregation : IAggregation
+    public string Apply(string path)
     {
-        public string Apply(string path)
-        {
-            return $"maxSeries({path})";
-        }
+        return $"maxSeries({path})";
     }
 }

@@ -1,52 +1,51 @@
 ﻿using CarbonApi.Client.Aggregation;
 
-namespace CarbonApi.Client
+namespace CarbonApi.Client;
+
+public class TargetBuilder
 {
-    public class TargetBuilder
+    private string pathPrefix;
+
+    private string path;
+
+    private string environment;
+
+    private IAggregation? aggregation;
+
+    public TargetBuilder WithPath(string path)
     {
-        private string pathPrefix;
+        this.path = path;
+        return this;
+    }
 
-        private string path;
+    public TargetBuilder WithPathPrefix(string pathPrefix)
+    {
+        this.pathPrefix = pathPrefix;
+        return this;
+    }
 
-        private string environment;
+    public TargetBuilder WithEnvironment(string environment)
+    {
+        this.environment = environment;
+        return this;
+    }
 
-        private IAggregation? aggregation;
+    public TargetBuilder WithAggregation(IAggregation aggregation)
+    {
+        this.aggregation = aggregation;
 
-        public TargetBuilder WithPath(string path)
+        return this;
+    }
+
+    public string Build()
+    {
+        var fullPath = $"{pathPrefix}.{environment}.{path}";
+
+        if (aggregation != null)
         {
-            this.path = path;
-            return this;
+            fullPath = aggregation.Apply(fullPath);
         }
 
-        public TargetBuilder WithPathPrefix(string pathPrefix)
-        {
-            this.pathPrefix = pathPrefix;
-            return this;
-        }
-
-        public TargetBuilder WithEnvironment(string environment)
-        {
-            this.environment = environment;
-            return this;
-        }
-
-        public TargetBuilder WithAggregation(IAggregation aggregation)
-        {
-            this.aggregation = aggregation;
-
-            return this;
-        }
-
-        public string Build()
-        {
-            var fullPath = $"{pathPrefix}.{environment}.{path}";
-
-            if (aggregation != null)
-            {
-                fullPath = aggregation.Apply(fullPath);
-            }
-
-            return fullPath;
-        }
+        return fullPath;
     }
 }

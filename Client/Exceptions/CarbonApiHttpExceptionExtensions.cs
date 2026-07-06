@@ -1,31 +1,33 @@
 ﻿using System;
 
-namespace CarbonApi.Client.Exceptions
+namespace CarbonApi.Client.Exceptions;
+
+internal static class CarbonApiHttpExceptionExtensions
 {
-    internal static class CarbonApiHttpExceptionExtensions
+    extension(CarbonApiHttpException ex)
     {
-        public static bool IsIgnoring(this CarbonApiHttpException ex)
+        public bool IsIgnoring()
         {
             return ex.IsMetricMissing() || ex.IsUnavailable() || ex.IsTimeout() || ex.Is400();
         }
 
-        private static bool IsMetricMissing(this CarbonApiHttpException ex)
+        private bool IsMetricMissing()
         {
             return ex.HttpCode == 500 &&
                    ex.Content.IndexOf("index out of range", StringComparison.InvariantCultureIgnoreCase) >= 0;
         }
 
-        private static bool IsUnavailable(this CarbonApiHttpException ex)
+        private bool IsUnavailable()
         {
             return ex.HttpCode == 502;
         }
 
-        private static bool IsTimeout(this CarbonApiHttpException ex)
+        private bool IsTimeout()
         {
             return ex.HttpCode == 504;
         }
 
-        private static bool Is400(this CarbonApiHttpException ex)
+        private bool Is400()
         {
             return ex.HttpCode is 450 or 408;
         }

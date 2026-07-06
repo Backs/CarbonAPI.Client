@@ -4,7 +4,7 @@
 
 ### How to use
 
-```
+```csharp
 var factory = new CarbonApiClusterClientFactory(new SilentLog(), "http://url", "login", "password");
 
 var client = factory.Create();
@@ -16,8 +16,8 @@ var query = MetricTagQueryBuilder.New()
 	.AddTag("application", "(Mercury_Vetis_Proxy)", MetricTagOperator.NotLike)
 	.AddTag("_aggregate", "p95")
 	.AddTag("applicationType", "(ProcessIncomingConsignment|PrepareOutgoingConsignment|GetStockEntryChangesList|GetVetDocumentChangesList)", MetricTagOperator.Like)
-	.AddAggregation(new SummarizeAggregation(Period.FromMinutes((int)this.slowProcessingMovingAverage.TotalMinutes), SummarizeFunc.Min))
-	.AddAggregation(new AliasByTagsAggregation("applicationType"))
+	.Summarize(Period.FromMinutes(10), SummarizeFunc.Min)
+	.AliasByTags("applicationType")
 	.WithPeriod(Period.FromMinutes(15))
 	.Build();
 

@@ -1,23 +1,22 @@
 ﻿using System;
 
-namespace CarbonApi.Client.Aggregation
+namespace CarbonApi.Client.Aggregation;
+
+public sealed class AsPercentAggregation : IAggregation
 {
-    public sealed class AsPercentAggregation : IAggregation
+    private readonly string totalMetricPath;
+
+    public AsPercentAggregation(string totalMetricPath)
     {
-        private readonly string totalMetricPath;
-
-        public AsPercentAggregation(string totalMetricPath)
+        if (string.IsNullOrWhiteSpace(totalMetricPath))
         {
-            if (string.IsNullOrWhiteSpace(totalMetricPath))
-            {
-                throw new ArgumentNullException(nameof(totalMetricPath));
-            }
+            throw new ArgumentNullException(nameof(totalMetricPath));
+        }
 
-            this.totalMetricPath = totalMetricPath;
-        }
-        public string Apply(string path)
-        {
-            return $"asPercent({path},{totalMetricPath})";
-        }
+        this.totalMetricPath = totalMetricPath;
+    }
+    public string Apply(string path)
+    {
+        return $"asPercent({path},{totalMetricPath})";
     }
 }

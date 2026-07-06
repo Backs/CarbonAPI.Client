@@ -1,10 +1,9 @@
-﻿namespace CarbonApi.Client.Models
+﻿namespace CarbonApi.Client.Models;
+
+public enum MetricTagOperator
 {
-    public enum MetricTagOperator
-    {
-        Equal,
-        Like,
-        NotEqual,
-        NotLike
-    }
+    Equal,
+    Like,
+    NotEqual,
+    NotLike
 }

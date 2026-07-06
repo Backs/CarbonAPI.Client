@@ -1,23 +1,22 @@
 ﻿using System;
 
-namespace CarbonApi.Client.Aggregation
+namespace CarbonApi.Client.Aggregation;
+
+public sealed class AliasAggregation : IAggregation
 {
-    public sealed class AliasAggregation : IAggregation
+    private readonly string name;
+
+    public AliasAggregation(string name)
     {
-        private readonly string name;
-
-        public AliasAggregation(string name)
+        if (string.IsNullOrWhiteSpace(name))
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
+            throw new ArgumentNullException(nameof(name));
+        }
 
-            this.name = name;
-        }
-        public string Apply(string path)
-        {
-            return $"alias({path},'{this.name}')";
-        }
+        this.name = name;
+    }
+    public string Apply(string path)
+    {
+        return $"alias({path},'{this.name}')";
     }
 }
